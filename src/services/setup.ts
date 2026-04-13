@@ -2,7 +2,8 @@ import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildSkillsInstallArgs } from '../commands/skills-install.js';
+import { getApiKey } from '../utils/config.js';
+import { buildSkillsInstallArgs, cleanNpmEnv } from '../commands/skills-install.js';
 import { hasNpx, installSkillsNative } from '../commands/skills-native.js';
 
 export interface SetupOptions {
@@ -52,7 +53,7 @@ export async function installOutscraperSkills(
     console.log(`Running: ${command}\n`);
 
     try {
-      execSync(command, { stdio: 'inherit' });
+      execSync(command, { stdio: 'inherit', env: cleanNpmEnv() });
       return;
     } catch {
       console.log('Falling back to native skill install.\n');
@@ -60,4 +61,42 @@ export async function installOutscraperSkills(
   }
 
   await installSkillsNative(options);
+}
+
+export async function installOutscraperMcp(
+  options: SetupOptions = {}
+): Promise<void> {
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    throw new Error(
+      'No API key found. Run `outscraper login` first, or set OUTSCRAPER_API_KEY.'
+    );
+  }
+
+  const args = [
+    'npx',
+    'add-mcp',
+    '-y',
+    '"npx -y outscraper-mcp"',
+    '--name',
+    'outscraper',
+    '--env',
+    `OUTSCRAPER_API_KEY=${apiKey}`,
+  ];
+
+  if (options.global) {
+    args.push('--global');
+  }
+
+  if (options.agent) {
+    args.push('--agent', options.agent);
+  }
+
+  const command = args.join(' ');
+  console.log(`Running: ${command}\n`);
+
+  execSync(command, {
+    stdio: 'inherit',
+    env: cleanNpmEnv(),
+  });
 }

@@ -7,7 +7,7 @@ Command-line interface for the [Outscraper](https://outscraper.com/) Business Da
 - Search and retrieve Outscraper business data from your terminal
 - Authenticate once and reuse your API key across commands
 - Poll async requests and export results as JSON, pretty JSON, or CSV
-- Install Outscraper skills for AI coding agents
+- Install Outscraper skills and MCP integrations for AI coding agents
 - Bootstrap local projects with ready-to-run starter templates
 - Works well for lead generation, local SEO research, location intelligence, and business data workflows
 
@@ -18,7 +18,7 @@ Command-line interface for the [Outscraper](https://outscraper.com/) Business Da
 - `outscraper businesses status` to check async request results
 - `outscraper status` or `outscraper balance` to inspect account balance and billing status
 - `outscraper login`, `logout`, `config`, and `env` to manage authentication
-- `outscraper setup skills` to connect Outscraper to AI agents and editor tooling
+- `outscraper setup skills` and `outscraper setup mcp` to connect Outscraper to AI agents and editor tooling
 - `outscraper init` to install, authenticate, set up integrations, and scaffold a starter template
 
 ## Installation
@@ -190,6 +190,26 @@ Notes:
 - `--global` installs into user-level agent directories
 - without `--global`, native local install targets agent config folders in the current project when available
 
+Install the official Outscraper MCP server into editors and agents:
+
+```bash
+outscraper setup mcp
+```
+
+Install for a specific agent:
+
+```bash
+outscraper setup mcp --agent codex --global
+```
+
+This uses `add-mcp` to install the published `outscraper-mcp` package and inject `OUTSCRAPER_API_KEY` into the agent config. MCP install supports any agent that `add-mcp` supports (run `npx add-mcp list-agents` to see all).
+
+Equivalent direct install command:
+
+```bash
+npx add-mcp -y "npx -y outscraper-mcp" --name outscraper --env "OUTSCRAPER_API_KEY=<your-key>"
+```
+
 Run the full guided setup:
 
 ```bash
@@ -240,6 +260,16 @@ The current CLI is built around these Outscraper endpoints:
 - `GET /businesses/{business_id}`
 - `GET /requests/{requestId}`
 - `GET /profile/balance`
+
+## MCP Server
+
+The official MCP server lives in a separate repository:
+
+- [outscraper/outscraper-mcp-server](https://github.com/outscraper/outscraper-mcp-server)
+
+Published npm package:
+
+- `outscraper-mcp`
 
 ## Use Cases
 

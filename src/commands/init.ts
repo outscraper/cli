@@ -14,6 +14,7 @@ export interface InitOptions {
   skipInstall?: boolean;
   skipAuth?: boolean;
   skipSkills?: boolean;
+  skipMcp?: boolean;
   skipEnv?: boolean;
 }
 
@@ -29,6 +30,6 @@ export async function handleInitCommand(options: InitOptions = {}): Promise<void
   await runInitTemplatesStep(options);
 
   console.log('Setup complete.');
-  console.log('Try: outscraper setup skills');
+  console.log('Try: outscraper setup mcp');
   console.log('Or:  outscraper env\n');
 }

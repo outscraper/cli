@@ -3,6 +3,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { SUPPORTED_SKILLS_AGENTS } from '../utils/agents.js';
 
 interface AgentConfig {
   name: string;
@@ -16,11 +17,31 @@ export interface NativeSkillsInstallOptions {
 }
 
 const AGENTS: AgentConfig[] = [
-  { name: 'claude-code', globalSkillsDir: '.claude/skills', detectDir: '.claude' },
-  { name: 'cursor', globalSkillsDir: '.cursor/skills', detectDir: '.cursor' },
-  { name: 'windsurf', globalSkillsDir: '.windsurf/skills', detectDir: '.windsurf' },
-  { name: 'codex', globalSkillsDir: '.codex/skills', detectDir: '.codex' },
-  { name: 'continue', globalSkillsDir: '.continue/skills', detectDir: '.continue' }
+  {
+    name: SUPPORTED_SKILLS_AGENTS[0],
+    globalSkillsDir: '.claude/skills',
+    detectDir: '.claude',
+  },
+  {
+    name: SUPPORTED_SKILLS_AGENTS[1],
+    globalSkillsDir: '.cursor/skills',
+    detectDir: '.cursor',
+  },
+  {
+    name: SUPPORTED_SKILLS_AGENTS[2],
+    globalSkillsDir: '.windsurf/skills',
+    detectDir: '.windsurf',
+  },
+  {
+    name: SUPPORTED_SKILLS_AGENTS[3],
+    globalSkillsDir: '.codex/skills',
+    detectDir: '.codex',
+  },
+  {
+    name: SUPPORTED_SKILLS_AGENTS[4],
+    globalSkillsDir: '.continue/skills',
+    detectDir: '.continue',
+  },
 ];
 
 function getBundledSkillsDir(): string {

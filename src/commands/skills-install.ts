@@ -36,3 +36,13 @@ export function buildSkillsInstallArgs(
 
   return args;
 }
+
+export function cleanNpmEnv(): NodeJS.ProcessEnv {
+  const env = { ...process.env };
+  for (const key of Object.keys(env)) {
+    if (key.startsWith('npm_') || key === 'INIT_CWD' || key === 'PROJECT_CWD') {
+      delete env[key];
+    }
+  }
+  return env;
+}

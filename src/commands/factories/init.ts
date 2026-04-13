@@ -32,6 +32,7 @@ export function createInitCommand(): Command {
     .option('--skip-install', 'Skip global CLI installation')
     .option('--skip-auth', 'Skip authentication')
     .option('--skip-skills', 'Skip skills installation')
+    .option('--skip-mcp', 'Skip MCP installation')
     .option('--skip-env', 'Skip pulling API key into a local .env file')
     .action(
       wrapAction(async (template, options) => {
@@ -46,6 +47,7 @@ export function createInitCommand(): Command {
           skipInstall: options.skipInstall,
           skipAuth: options.skipAuth,
           skipSkills: options.skipSkills,
+          skipMcp: options.skipMcp,
           skipEnv: options.skipEnv,
         });
       })

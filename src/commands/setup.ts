@@ -1,9 +1,10 @@
 import {
+  installOutscraperMcp,
   installOutscraperSkills,
   type SetupOptions,
 } from '../services/setup.js';
 
-export type SetupSubcommand = 'skills';
+export type SetupSubcommand = 'skills' | 'mcp';
 
 export async function handleSetupCommand(
   subcommand: SetupSubcommand,
@@ -12,6 +13,9 @@ export async function handleSetupCommand(
   switch (subcommand) {
     case 'skills':
       await installOutscraperSkills(options);
+      return;
+    case 'mcp':
+      await installOutscraperMcp(options);
       return;
     default:
       throw new Error(`Unknown setup subcommand: ${subcommand}`);

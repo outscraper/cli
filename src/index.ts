@@ -26,7 +26,7 @@ const program = new Command();
 program
   .name('outscraper')
   .description(
-    'CLI for Outscraper setup, auth, business search, and templates'
+    'CLI for Outscraper setup, auth, business search, MCP, and templates'
   )
   .version(packageJson.version)
   .option(
