@@ -36,7 +36,7 @@ async function main() {
 
   const apiKey = process.env.OUTSCRAPER_API_KEY;
   const apiUrl =
-    (process.env.OUTSCRAPER_API_URL || 'https://api.outscraper.cloud').replace(/\/$/, '');
+    (process.env.OUTSCRAPER_API_URL || 'https://api.outscraper.com').replace(/\/$/, '');
 
   if (!apiKey) {
     throw new Error('OUTSCRAPER_API_KEY is missing. Add it to .env first.');

@@ -31,7 +31,7 @@ export async function viewConfig(): Promise<void> {
 
     console.log('Status: Authenticated');
     console.log(`API Key: ${maskedKey}`);
-    console.log(`API URL: ${config.apiUrl || 'https://api.outscraper.cloud'}`);
+    console.log(`API URL: ${config.apiUrl || 'https://api.outscraper.com'}`);
     console.log(`Config:  ${getConfigDirectoryPath()}`);
     console.log(`Env Var: OUTSCRAPER_API_KEY`);
     console.log(`Stored:  ${config.apiKey ? 'yes' : 'no'}`);

@@ -1,7 +1,7 @@
 import { getApiKey } from './config.js';
 import { ensureAuthenticated } from './auth.js';
 
-const DEFAULT_API_URL = 'https://api.outscraper.cloud';
+const DEFAULT_API_URL = 'https://api.outscraper.com';
 
 export interface ClientOptions {
   apiKey?: string;

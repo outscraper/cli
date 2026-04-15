@@ -167,7 +167,7 @@ You can also pass credentials per command:
 
 ```bash
 outscraper --api-key YOUR_KEY businesses list --query "dentists in Chicago"
-outscraper --api-url https://api.outscraper.cloud businesses status <request-id>
+outscraper --api-url https://api.outscraper.com businesses status <request-id>
 ```
 
 ## AI Agent Setup

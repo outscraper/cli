@@ -3,7 +3,7 @@ import { input, select } from '@inquirer/prompts';
 import { getApiKey, updateConfig } from './config.js';
 import { saveCredentials } from './credentials.js';
 
-const API_KEYS_URL = 'https://app.outscraper.cloud/account/api';
+const API_KEYS_URL = 'https://app.outscraper.com/account/api';
 
 export function isAuthenticated(): boolean {
   return !!getApiKey();

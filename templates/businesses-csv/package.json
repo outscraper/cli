@@ -1,7 +1,7 @@
 {
   "name": "outscraper-businesses-csv-starter",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "scripts": {
     "start": "node export-businesses.js"
